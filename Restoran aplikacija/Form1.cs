@@ -18,13 +18,14 @@ namespace Restoran_aplikacija
         public mainForm()
         {
             InitializeComponent();
-            baza = new databaza(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\database\\Restoran.accdb");
-            listaJela = new List<jelo>();
+            
         }
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            loadIntoJeloList();
+            baza = new databaza(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\database\\Restoran.accdb");
+            listaJela = new List<jelo>();
+            listaJela = databaza.loadIntoJeloList(baza);
         }
 
         private void dodajJeloToolStripMenuItem_Click(object sender, EventArgs e)
@@ -39,9 +40,9 @@ namespace Restoran_aplikacija
                 };
 
                 cmd.Parameters.AddWithValue("naziv", "Ruska salata");
-                cmd.Parameters.AddWithValue("cena", 299.99);
+                cmd.Parameters.AddWithValue("cena", 300);
                 int rows = cmd.ExecuteNonQuery();
-                MessageBox.Show("Rows inserted: " + rows);
+                //MessageBox.Show("Rows inserted: " + rows); // debugovanje, nesto mi ne radi
             }
             catch(Exception ex)
             {
@@ -50,40 +51,11 @@ namespace Restoran_aplikacija
             finally
             {
                 baza.closeConnection();
-                loadIntoJeloList();
-            }
-        }
-
-        private void loadIntoJeloList()
-        {
-            try
-            {
-                baza.openConnection();
-                OleDbCommand cmd = new OleDbCommand
-                {
-                    Connection = baza.Conn,
-                    CommandText = "select * from jelo"
-                };
-                OleDbDataReader rd = cmd.ExecuteReader();
                 listaJela.Clear();
-                while(rd.Read())
-                {
-                    jelo jeloZaDodati = new jelo();
-                    jeloZaDodati.IdJela = int.Parse(rd["id_jelo"].ToString());
-                    jeloZaDodati.Naziv = rd["naziv"].ToString();
-                    jeloZaDodati.Cena = double.Parse(rd["cena"].ToString());
-
-                    listaJela.Add(jeloZaDodati);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                baza.closeConnection();
+                listaJela = databaza.loadIntoJeloList(baza);
             }
         }
+
+        
     }
 }

@@ -32,16 +32,28 @@
             this.dodajNovuStavkuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajJeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajPrilogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izmeniStavkuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izmeniJeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izmeniPrilogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.poveziPrilogZaJeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izbrisiStavkuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izbrisiJeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izbrisiPrilogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnFirstTable = new System.Windows.Forms.Button();
             this.btnSecondTable = new System.Windows.Forms.Button();
             this.btnThirdTable = new System.Windows.Forms.Button();
             this.btnFourthTable = new System.Windows.Forms.Button();
             this.btnFifthTable = new System.Windows.Forms.Button();
             this.btnSixthTable = new System.Windows.Forms.Button();
-            this.izmeniStavkuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.izmeniJeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.izmeniPrilogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.poveziPrilogZaJeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.izvestajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.racuniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nezatvoreniRacuniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prviStoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drugiStoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treciStoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cetvrtiStoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.petiStoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.slavskiStoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +61,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dodajNovuStavkuToolStripMenuItem,
-            this.izmeniStavkuToolStripMenuItem});
+            this.izmeniStavkuToolStripMenuItem,
+            this.izbrisiStavkuToolStripMenuItem,
+            this.izvestajiToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -68,15 +82,64 @@
             // dodajJeloToolStripMenuItem
             // 
             this.dodajJeloToolStripMenuItem.Name = "dodajJeloToolStripMenuItem";
-            this.dodajJeloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajJeloToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.dodajJeloToolStripMenuItem.Text = "Dodaj jelo";
             this.dodajJeloToolStripMenuItem.Click += new System.EventHandler(this.dodajJeloToolStripMenuItem_Click);
             // 
             // dodajPrilogToolStripMenuItem
             // 
             this.dodajPrilogToolStripMenuItem.Name = "dodajPrilogToolStripMenuItem";
-            this.dodajPrilogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajPrilogToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.dodajPrilogToolStripMenuItem.Text = "Dodaj prilog";
+            // 
+            // izmeniStavkuToolStripMenuItem
+            // 
+            this.izmeniStavkuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.izmeniJeloToolStripMenuItem,
+            this.izmeniPrilogToolStripMenuItem,
+            this.poveziPrilogZaJeloToolStripMenuItem});
+            this.izmeniStavkuToolStripMenuItem.Name = "izmeniStavkuToolStripMenuItem";
+            this.izmeniStavkuToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.izmeniStavkuToolStripMenuItem.Text = "Izmeni stavku";
+            // 
+            // izmeniJeloToolStripMenuItem
+            // 
+            this.izmeniJeloToolStripMenuItem.Name = "izmeniJeloToolStripMenuItem";
+            this.izmeniJeloToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.izmeniJeloToolStripMenuItem.Text = "Izmeni jelo";
+            // 
+            // izmeniPrilogToolStripMenuItem
+            // 
+            this.izmeniPrilogToolStripMenuItem.Name = "izmeniPrilogToolStripMenuItem";
+            this.izmeniPrilogToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.izmeniPrilogToolStripMenuItem.Text = "Izmeni prilog";
+            // 
+            // poveziPrilogZaJeloToolStripMenuItem
+            // 
+            this.poveziPrilogZaJeloToolStripMenuItem.Name = "poveziPrilogZaJeloToolStripMenuItem";
+            this.poveziPrilogZaJeloToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.poveziPrilogZaJeloToolStripMenuItem.Text = "Povezi prilog za jelo";
+            // 
+            // izbrisiStavkuToolStripMenuItem
+            // 
+            this.izbrisiStavkuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.izbrisiJeloToolStripMenuItem,
+            this.izbrisiPrilogToolStripMenuItem});
+            this.izbrisiStavkuToolStripMenuItem.Name = "izbrisiStavkuToolStripMenuItem";
+            this.izbrisiStavkuToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.izbrisiStavkuToolStripMenuItem.Text = "Izbrisi stavku";
+            // 
+            // izbrisiJeloToolStripMenuItem
+            // 
+            this.izbrisiJeloToolStripMenuItem.Name = "izbrisiJeloToolStripMenuItem";
+            this.izbrisiJeloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.izbrisiJeloToolStripMenuItem.Text = "Izbrisi jelo";
+            // 
+            // izbrisiPrilogToolStripMenuItem
+            // 
+            this.izbrisiPrilogToolStripMenuItem.Name = "izbrisiPrilogToolStripMenuItem";
+            this.izbrisiPrilogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.izbrisiPrilogToolStripMenuItem.Text = "Izbrisi prilog";
             // 
             // btnFirstTable
             // 
@@ -132,33 +195,69 @@
             this.btnSixthTable.Text = "Kreiraj racun";
             this.btnSixthTable.UseVisualStyleBackColor = true;
             // 
-            // izmeniStavkuToolStripMenuItem
+            // izvestajiToolStripMenuItem
             // 
-            this.izmeniStavkuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.izmeniJeloToolStripMenuItem,
-            this.izmeniPrilogToolStripMenuItem,
-            this.poveziPrilogZaJeloToolStripMenuItem});
-            this.izmeniStavkuToolStripMenuItem.Name = "izmeniStavkuToolStripMenuItem";
-            this.izmeniStavkuToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.izmeniStavkuToolStripMenuItem.Text = "Izmeni stavku";
+            this.izvestajiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.racuniToolStripMenuItem,
+            this.nezatvoreniRacuniToolStripMenuItem});
+            this.izvestajiToolStripMenuItem.Name = "izvestajiToolStripMenuItem";
+            this.izvestajiToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.izvestajiToolStripMenuItem.Text = "Izvestaji";
             // 
-            // izmeniJeloToolStripMenuItem
+            // racuniToolStripMenuItem
             // 
-            this.izmeniJeloToolStripMenuItem.Name = "izmeniJeloToolStripMenuItem";
-            this.izmeniJeloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.izmeniJeloToolStripMenuItem.Text = "Izmeni jelo";
+            this.racuniToolStripMenuItem.Name = "racuniToolStripMenuItem";
+            this.racuniToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.racuniToolStripMenuItem.Text = "Racuni";
             // 
-            // izmeniPrilogToolStripMenuItem
+            // nezatvoreniRacuniToolStripMenuItem
             // 
-            this.izmeniPrilogToolStripMenuItem.Name = "izmeniPrilogToolStripMenuItem";
-            this.izmeniPrilogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.izmeniPrilogToolStripMenuItem.Text = "Izmeni prilog";
+            this.nezatvoreniRacuniToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prviStoToolStripMenuItem,
+            this.drugiStoToolStripMenuItem,
+            this.treciStoToolStripMenuItem,
+            this.cetvrtiStoToolStripMenuItem,
+            this.petiStoToolStripMenuItem,
+            this.slavskiStoToolStripMenuItem});
+            this.nezatvoreniRacuniToolStripMenuItem.Name = "nezatvoreniRacuniToolStripMenuItem";
+            this.nezatvoreniRacuniToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nezatvoreniRacuniToolStripMenuItem.Text = "Nezatvoreni racuni";
             // 
-            // poveziPrilogZaJeloToolStripMenuItem
+            // prviStoToolStripMenuItem
             // 
-            this.poveziPrilogZaJeloToolStripMenuItem.Name = "poveziPrilogZaJeloToolStripMenuItem";
-            this.poveziPrilogZaJeloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.poveziPrilogZaJeloToolStripMenuItem.Text = "Povezi prilog za jelo";
+            this.prviStoToolStripMenuItem.Name = "prviStoToolStripMenuItem";
+            this.prviStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prviStoToolStripMenuItem.Text = "Prvi sto";
+            // 
+            // drugiStoToolStripMenuItem
+            // 
+            this.drugiStoToolStripMenuItem.Name = "drugiStoToolStripMenuItem";
+            this.drugiStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.drugiStoToolStripMenuItem.Text = "Drugi sto";
+            // 
+            // treciStoToolStripMenuItem
+            // 
+            this.treciStoToolStripMenuItem.Name = "treciStoToolStripMenuItem";
+            this.treciStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.treciStoToolStripMenuItem.Text = "Treci sto";
+            // 
+            // cetvrtiStoToolStripMenuItem
+            // 
+            this.cetvrtiStoToolStripMenuItem.Name = "cetvrtiStoToolStripMenuItem";
+            this.cetvrtiStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cetvrtiStoToolStripMenuItem.Text = "Cetvrti sto";
+            // 
+            // petiStoToolStripMenuItem
+            // 
+            this.petiStoToolStripMenuItem.Name = "petiStoToolStripMenuItem";
+            this.petiStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.petiStoToolStripMenuItem.Text = "Peti Sto";
+            // 
+            // slavskiStoToolStripMenuItem
+            // 
+            this.slavskiStoToolStripMenuItem.Name = "slavskiStoToolStripMenuItem";
+            this.slavskiStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.slavskiStoToolStripMenuItem.Text = "Slavski sto";
             // 
             // mainForm
             // 
@@ -204,6 +303,18 @@
         private System.Windows.Forms.ToolStripMenuItem izmeniJeloToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem izmeniPrilogToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem poveziPrilogZaJeloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem izbrisiStavkuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem izbrisiJeloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem izbrisiPrilogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem izvestajiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem racuniToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nezatvoreniRacuniToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prviStoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem drugiStoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem treciStoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cetvrtiStoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem petiStoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem slavskiStoToolStripMenuItem;
     }
 }
 
