@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restoran_aplikacija.klase
 {
-    class racun
+    public class racun
     {
         private int idRacuna;
         private int ukupnaCena;
@@ -17,6 +17,13 @@ namespace Restoran_aplikacija.klase
             this.IdRacuna = idRacuna;
             this.UkupnaCena = ukupnaCena;
             this.DatumRacuna = datumRacuna;
+        }
+
+        public racun()
+        {
+            this.idRacuna = 0;
+            this.ukupnaCena = 0;
+            this.datumRacuna = DateTime.MinValue;
         }
 
         public int IdRacuna { get => idRacuna; set => idRacuna = value; }

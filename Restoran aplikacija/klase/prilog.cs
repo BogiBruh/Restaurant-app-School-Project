@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restoran_aplikacija.klase
 {
-    class prilog
+    public class prilog
     {
         private int idPriloga;
         private int cenaPriloga;
@@ -17,6 +17,13 @@ namespace Restoran_aplikacija.klase
             this.IdPriloga = idPriloga;
             this.CenaPriloga = cenaPriloga;
             this.NazivPriloga = nazivPriloga;
+        }
+
+        public prilog()
+        {
+            this.idPriloga = 0;
+            this.cenaPriloga = 0;
+            this.nazivPriloga = null;
         }
 
         public int IdPriloga { get => idPriloga; set => idPriloga = value; }

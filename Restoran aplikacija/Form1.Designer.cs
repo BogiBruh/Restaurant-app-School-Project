@@ -1,6 +1,6 @@
 ﻿namespace Restoran_aplikacija
 {
-    partial class mainForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -39,12 +39,6 @@
             this.izbrisiStavkuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izbrisiJeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izbrisiPrilogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFirstTable = new System.Windows.Forms.Button();
-            this.btnSecondTable = new System.Windows.Forms.Button();
-            this.btnThirdTable = new System.Windows.Forms.Button();
-            this.btnFourthTable = new System.Windows.Forms.Button();
-            this.btnFifthTable = new System.Windows.Forms.Button();
-            this.btnSixthTable = new System.Windows.Forms.Button();
             this.izvestajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.racuniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nezatvoreniRacuniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +48,12 @@
             this.cetvrtiStoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.petiStoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.slavskiStoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFirstTable = new System.Windows.Forms.Button();
+            this.btnSecondTable = new System.Windows.Forms.Button();
+            this.btnThirdTable = new System.Windows.Forms.Button();
+            this.btnFourthTable = new System.Windows.Forms.Button();
+            this.btnFifthTable = new System.Windows.Forms.Button();
+            this.btnSixthTable = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,6 +91,7 @@
             this.dodajPrilogToolStripMenuItem.Name = "dodajPrilogToolStripMenuItem";
             this.dodajPrilogToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.dodajPrilogToolStripMenuItem.Text = "Dodaj prilog";
+            this.dodajPrilogToolStripMenuItem.Click += new System.EventHandler(this.dodajPrilogToolStripMenuItem_Click);
             // 
             // izmeniStavkuToolStripMenuItem
             // 
@@ -105,19 +106,21 @@
             // izmeniJeloToolStripMenuItem
             // 
             this.izmeniJeloToolStripMenuItem.Name = "izmeniJeloToolStripMenuItem";
-            this.izmeniJeloToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.izmeniJeloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.izmeniJeloToolStripMenuItem.Text = "Izmeni jelo";
+            this.izmeniJeloToolStripMenuItem.Click += new System.EventHandler(this.izmeniJeloToolStripMenuItem_Click);
             // 
             // izmeniPrilogToolStripMenuItem
             // 
             this.izmeniPrilogToolStripMenuItem.Name = "izmeniPrilogToolStripMenuItem";
-            this.izmeniPrilogToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.izmeniPrilogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.izmeniPrilogToolStripMenuItem.Text = "Izmeni prilog";
+            this.izmeniPrilogToolStripMenuItem.Click += new System.EventHandler(this.izmeniPrilogToolStripMenuItem_Click);
             // 
             // poveziPrilogZaJeloToolStripMenuItem
             // 
             this.poveziPrilogZaJeloToolStripMenuItem.Name = "poveziPrilogZaJeloToolStripMenuItem";
-            this.poveziPrilogZaJeloToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.poveziPrilogZaJeloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.poveziPrilogZaJeloToolStripMenuItem.Text = "Povezi prilog za jelo";
             // 
             // izbrisiStavkuToolStripMenuItem
@@ -141,60 +144,6 @@
             this.izbrisiPrilogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.izbrisiPrilogToolStripMenuItem.Text = "Izbrisi prilog";
             // 
-            // btnFirstTable
-            // 
-            this.btnFirstTable.Location = new System.Drawing.Point(230, 127);
-            this.btnFirstTable.Name = "btnFirstTable";
-            this.btnFirstTable.Size = new System.Drawing.Size(110, 55);
-            this.btnFirstTable.TabIndex = 1;
-            this.btnFirstTable.Text = "Kreiraj racun";
-            this.btnFirstTable.UseVisualStyleBackColor = true;
-            // 
-            // btnSecondTable
-            // 
-            this.btnSecondTable.Location = new System.Drawing.Point(552, 124);
-            this.btnSecondTable.Name = "btnSecondTable";
-            this.btnSecondTable.Size = new System.Drawing.Size(110, 55);
-            this.btnSecondTable.TabIndex = 2;
-            this.btnSecondTable.Text = "Kreiraj racun";
-            this.btnSecondTable.UseVisualStyleBackColor = true;
-            // 
-            // btnThirdTable
-            // 
-            this.btnThirdTable.Location = new System.Drawing.Point(849, 121);
-            this.btnThirdTable.Name = "btnThirdTable";
-            this.btnThirdTable.Size = new System.Drawing.Size(110, 55);
-            this.btnThirdTable.TabIndex = 3;
-            this.btnThirdTable.Text = "Kreiraj racun";
-            this.btnThirdTable.UseVisualStyleBackColor = true;
-            // 
-            // btnFourthTable
-            // 
-            this.btnFourthTable.Location = new System.Drawing.Point(160, 359);
-            this.btnFourthTable.Name = "btnFourthTable";
-            this.btnFourthTable.Size = new System.Drawing.Size(110, 55);
-            this.btnFourthTable.TabIndex = 4;
-            this.btnFourthTable.Text = "Kreiraj racun";
-            this.btnFourthTable.UseVisualStyleBackColor = true;
-            // 
-            // btnFifthTable
-            // 
-            this.btnFifthTable.Location = new System.Drawing.Point(552, 350);
-            this.btnFifthTable.Name = "btnFifthTable";
-            this.btnFifthTable.Size = new System.Drawing.Size(110, 55);
-            this.btnFifthTable.TabIndex = 5;
-            this.btnFifthTable.Text = "Kreiraj racun";
-            this.btnFifthTable.UseVisualStyleBackColor = true;
-            // 
-            // btnSixthTable
-            // 
-            this.btnSixthTable.Location = new System.Drawing.Point(587, 608);
-            this.btnSixthTable.Name = "btnSixthTable";
-            this.btnSixthTable.Size = new System.Drawing.Size(110, 55);
-            this.btnSixthTable.TabIndex = 6;
-            this.btnSixthTable.Text = "Kreiraj racun";
-            this.btnSixthTable.UseVisualStyleBackColor = true;
-            // 
             // izvestajiToolStripMenuItem
             // 
             this.izvestajiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -207,7 +156,7 @@
             // racuniToolStripMenuItem
             // 
             this.racuniToolStripMenuItem.Name = "racuniToolStripMenuItem";
-            this.racuniToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.racuniToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.racuniToolStripMenuItem.Text = "Racuni";
             // 
             // nezatvoreniRacuniToolStripMenuItem
@@ -220,46 +169,106 @@
             this.petiStoToolStripMenuItem,
             this.slavskiStoToolStripMenuItem});
             this.nezatvoreniRacuniToolStripMenuItem.Name = "nezatvoreniRacuniToolStripMenuItem";
-            this.nezatvoreniRacuniToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nezatvoreniRacuniToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.nezatvoreniRacuniToolStripMenuItem.Text = "Nezatvoreni racuni";
             // 
             // prviStoToolStripMenuItem
             // 
             this.prviStoToolStripMenuItem.Name = "prviStoToolStripMenuItem";
-            this.prviStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prviStoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.prviStoToolStripMenuItem.Text = "Prvi sto";
             // 
             // drugiStoToolStripMenuItem
             // 
             this.drugiStoToolStripMenuItem.Name = "drugiStoToolStripMenuItem";
-            this.drugiStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.drugiStoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.drugiStoToolStripMenuItem.Text = "Drugi sto";
             // 
             // treciStoToolStripMenuItem
             // 
             this.treciStoToolStripMenuItem.Name = "treciStoToolStripMenuItem";
-            this.treciStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.treciStoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.treciStoToolStripMenuItem.Text = "Treci sto";
             // 
             // cetvrtiStoToolStripMenuItem
             // 
             this.cetvrtiStoToolStripMenuItem.Name = "cetvrtiStoToolStripMenuItem";
-            this.cetvrtiStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cetvrtiStoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.cetvrtiStoToolStripMenuItem.Text = "Cetvrti sto";
             // 
             // petiStoToolStripMenuItem
             // 
             this.petiStoToolStripMenuItem.Name = "petiStoToolStripMenuItem";
-            this.petiStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.petiStoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.petiStoToolStripMenuItem.Text = "Peti Sto";
             // 
             // slavskiStoToolStripMenuItem
             // 
             this.slavskiStoToolStripMenuItem.Name = "slavskiStoToolStripMenuItem";
-            this.slavskiStoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.slavskiStoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.slavskiStoToolStripMenuItem.Text = "Slavski sto";
             // 
-            // mainForm
+            // btnFirstTable
+            // 
+            this.btnFirstTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFirstTable.Location = new System.Drawing.Point(230, 127);
+            this.btnFirstTable.Name = "btnFirstTable";
+            this.btnFirstTable.Size = new System.Drawing.Size(110, 55);
+            this.btnFirstTable.TabIndex = 1;
+            this.btnFirstTable.Text = "Kreiraj racun";
+            this.btnFirstTable.UseVisualStyleBackColor = true;
+            // 
+            // btnSecondTable
+            // 
+            this.btnSecondTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSecondTable.Location = new System.Drawing.Point(552, 124);
+            this.btnSecondTable.Name = "btnSecondTable";
+            this.btnSecondTable.Size = new System.Drawing.Size(110, 55);
+            this.btnSecondTable.TabIndex = 2;
+            this.btnSecondTable.Text = "Kreiraj racun";
+            this.btnSecondTable.UseVisualStyleBackColor = true;
+            // 
+            // btnThirdTable
+            // 
+            this.btnThirdTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThirdTable.Location = new System.Drawing.Point(849, 121);
+            this.btnThirdTable.Name = "btnThirdTable";
+            this.btnThirdTable.Size = new System.Drawing.Size(110, 55);
+            this.btnThirdTable.TabIndex = 3;
+            this.btnThirdTable.Text = "Kreiraj racun";
+            this.btnThirdTable.UseVisualStyleBackColor = true;
+            // 
+            // btnFourthTable
+            // 
+            this.btnFourthTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFourthTable.Location = new System.Drawing.Point(160, 359);
+            this.btnFourthTable.Name = "btnFourthTable";
+            this.btnFourthTable.Size = new System.Drawing.Size(110, 55);
+            this.btnFourthTable.TabIndex = 4;
+            this.btnFourthTable.Text = "Kreiraj racun";
+            this.btnFourthTable.UseVisualStyleBackColor = true;
+            // 
+            // btnFifthTable
+            // 
+            this.btnFifthTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFifthTable.Location = new System.Drawing.Point(552, 350);
+            this.btnFifthTable.Name = "btnFifthTable";
+            this.btnFifthTable.Size = new System.Drawing.Size(110, 55);
+            this.btnFifthTable.TabIndex = 5;
+            this.btnFifthTable.Text = "Kreiraj racun";
+            this.btnFifthTable.UseVisualStyleBackColor = true;
+            // 
+            // btnSixthTable
+            // 
+            this.btnSixthTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSixthTable.Location = new System.Drawing.Point(587, 608);
+            this.btnSixthTable.Name = "btnSixthTable";
+            this.btnSixthTable.Size = new System.Drawing.Size(110, 55);
+            this.btnSixthTable.TabIndex = 6;
+            this.btnSixthTable.Text = "Kreiraj racun";
+            this.btnSixthTable.UseVisualStyleBackColor = true;
+            // 
+            // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::Restoran_aplikacija.Properties.Resources.bgimgpng;
@@ -276,10 +285,10 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.Name = "mainForm";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Restoran";
-            this.Load += new System.EventHandler(this.mainForm_Load);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

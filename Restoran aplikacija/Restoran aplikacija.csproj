@@ -54,8 +54,39 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="forme\brisanje\deleteJelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forme\brisanje\deleteJelo.Designer.cs">
+      <DependentUpon>deleteJelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forme\dodavanje\addJelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forme\dodavanje\addJelo.Designer.cs">
+      <DependentUpon>addJelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forme\dodavanje\addPrilog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forme\dodavanje\addPrilog.Designer.cs">
+      <DependentUpon>addPrilog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forme\editovanje\editJelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forme\editovanje\editJelo.Designer.cs">
+      <DependentUpon>editJelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forme\editovanje\editPrilog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forme\editovanje\editPrilog.Designer.cs">
+      <DependentUpon>editPrilog.cs</DependentUpon>
+    </Compile>
     <Compile Include="klase\jelo.cs" />
     <Compile Include="klase\prilog.cs" />
+    <Compile Include="klase\racun.cs" />
     <Compile Include="klase\stavkaRacuna.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,6 +97,21 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forme\brisanje\deleteJelo.resx">
+      <DependentUpon>deleteJelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forme\dodavanje\addJelo.resx">
+      <DependentUpon>addJelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forme\dodavanje\addPrilog.resx">
+      <DependentUpon>addPrilog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forme\editovanje\editJelo.resx">
+      <DependentUpon>editJelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forme\editovanje\editPrilog.resx">
+      <DependentUpon>editPrilog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -107,6 +153,9 @@
     </Content>
     <Content Include="img\bgimgjpg.jpg" />
     <Content Include="img\bgimgpng.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="forme\izvestaji\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
