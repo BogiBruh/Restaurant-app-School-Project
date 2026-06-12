@@ -36,6 +36,7 @@
             this.izmeniJeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izmeniPrilogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.poveziPrilogZaJeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odveziPrilogOdJelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izbrisiStavkuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izbrisiJeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izbrisiPrilogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,7 +99,8 @@
             this.izmeniStavkuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.izmeniJeloToolStripMenuItem,
             this.izmeniPrilogToolStripMenuItem,
-            this.poveziPrilogZaJeloToolStripMenuItem});
+            this.poveziPrilogZaJeloToolStripMenuItem,
+            this.odveziPrilogOdJelaToolStripMenuItem});
             this.izmeniStavkuToolStripMenuItem.Name = "izmeniStavkuToolStripMenuItem";
             this.izmeniStavkuToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.izmeniStavkuToolStripMenuItem.Text = "Izmeni stavku";
@@ -106,22 +108,29 @@
             // izmeniJeloToolStripMenuItem
             // 
             this.izmeniJeloToolStripMenuItem.Name = "izmeniJeloToolStripMenuItem";
-            this.izmeniJeloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.izmeniJeloToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.izmeniJeloToolStripMenuItem.Text = "Izmeni jelo";
             this.izmeniJeloToolStripMenuItem.Click += new System.EventHandler(this.izmeniJeloToolStripMenuItem_Click);
             // 
             // izmeniPrilogToolStripMenuItem
             // 
             this.izmeniPrilogToolStripMenuItem.Name = "izmeniPrilogToolStripMenuItem";
-            this.izmeniPrilogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.izmeniPrilogToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.izmeniPrilogToolStripMenuItem.Text = "Izmeni prilog";
             this.izmeniPrilogToolStripMenuItem.Click += new System.EventHandler(this.izmeniPrilogToolStripMenuItem_Click);
             // 
             // poveziPrilogZaJeloToolStripMenuItem
             // 
             this.poveziPrilogZaJeloToolStripMenuItem.Name = "poveziPrilogZaJeloToolStripMenuItem";
-            this.poveziPrilogZaJeloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.poveziPrilogZaJeloToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.poveziPrilogZaJeloToolStripMenuItem.Text = "Povezi prilog za jelo";
+            this.poveziPrilogZaJeloToolStripMenuItem.Click += new System.EventHandler(this.poveziPrilogZaJeloToolStripMenuItem_Click);
+            // 
+            // odveziPrilogOdJelaToolStripMenuItem
+            // 
+            this.odveziPrilogOdJelaToolStripMenuItem.Name = "odveziPrilogOdJelaToolStripMenuItem";
+            this.odveziPrilogOdJelaToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.odveziPrilogOdJelaToolStripMenuItem.Text = "Odvezi prilog od jela";
             // 
             // izbrisiStavkuToolStripMenuItem
             // 
@@ -137,12 +146,14 @@
             this.izbrisiJeloToolStripMenuItem.Name = "izbrisiJeloToolStripMenuItem";
             this.izbrisiJeloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.izbrisiJeloToolStripMenuItem.Text = "Izbrisi jelo";
+            this.izbrisiJeloToolStripMenuItem.Click += new System.EventHandler(this.izbrisiJeloToolStripMenuItem_Click);
             // 
             // izbrisiPrilogToolStripMenuItem
             // 
             this.izbrisiPrilogToolStripMenuItem.Name = "izbrisiPrilogToolStripMenuItem";
             this.izbrisiPrilogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.izbrisiPrilogToolStripMenuItem.Text = "Izbrisi prilog";
+            this.izbrisiPrilogToolStripMenuItem.Click += new System.EventHandler(this.izbrisiPrilogToolStripMenuItem_Click);
             // 
             // izvestajiToolStripMenuItem
             // 
@@ -324,6 +335,7 @@
         private System.Windows.Forms.ToolStripMenuItem cetvrtiStoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem petiStoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem slavskiStoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem odveziPrilogOdJelaToolStripMenuItem;
     }
 }
 

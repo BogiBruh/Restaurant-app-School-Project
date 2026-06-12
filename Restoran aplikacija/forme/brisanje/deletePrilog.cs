@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Restoran_aplikacija.klase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,34 +12,34 @@ using System.Windows.Forms;
 
 namespace Restoran_aplikacija.forme.brisanje
 {
-    public partial class deleteJelo : Form
+    public partial class deletePrilog : Form
     {
         databaza baza;
-        List<jelo> listaJela;
+        List<prilog> listaPriloga;
         int filter = 0;
-        public deleteJelo()
+
+        public deletePrilog()
         {
             InitializeComponent();
         }
 
-        public deleteJelo(List<jelo> _listaJela, databaza _baza)
+        public deletePrilog(List<prilog> _listaPriloga, databaza _baza)
         {
             InitializeComponent();
-            listaJela = _listaJela;
-            baza = _baza;  
+            baza = _baza;
+            listaPriloga = _listaPriloga;
         }
 
-        private void deleteJelo_Load(object sender, EventArgs e)
+        private void deletePrilog_Load(object sender, EventArgs e)
         {
             comboFilter.SelectedIndex = 0;
-            comboJelo.Items.Clear();
-            comboJelo.DataSource = listaJela;
-            comboJelo.DisplayMember = "Naziv";
-            comboJelo.ValueMember = "IdJela";
+            comboPrilog.DataSource = listaPriloga;
+            comboPrilog.DisplayMember = "NazivPriloga";
+            comboPrilog.ValueMember = "IdPriloga";
 
-            if (listaJela.Count == 0)
+            if (listaPriloga.Count == 0)
             {
-                MessageBox.Show("Morate imati makar jedno jelo da biste brisali jela!");
+                MessageBox.Show("Morate imati makar neki prilog da biste ga izbrisali!");
                 this.Close();
             }
         }
@@ -47,10 +48,90 @@ namespace Restoran_aplikacija.forme.brisanje
         {
             this.Close();
         }
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            if (tboxFilter.Text.Length == 0)
+            {
+                MessageBox.Show("Morate uneti neki parametar za filtriranje!");
+                return;
+            }
+
+            bool valid = false;
+
+            try
+            {
+                OleDbCommand cmd = new OleDbCommand();
+                baza.openConnection();
+                cmd.Connection = baza.Conn;
+                List<prilog> filterListaPriloga = new List<prilog>();
+
+                switch (filter)
+                {
+                    case 0:
+                        cmd.CommandText = "select * from prilog where naziv like ?";
+                        cmd.Parameters.AddWithValue("@filtertekst", "%" + tboxFilter.Text + "%");
+                        valid = true;
+                        break;
+                    case 1:
+                        int filterCeneVise;
+                        if (int.TryParse(tboxFilter.Text, out filterCeneVise))
+                        {
+                            cmd.CommandText = "select * from prilog where cena >= ?";
+                            cmd.Parameters.AddWithValue("@filterCena", filterCeneVise);
+                            valid = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Morate uneti validan broj za filter cene!");
+                        }
+                        break;
+                    case 2:
+                        int filterCeneManje;
+                        if (int.TryParse(tboxFilter.Text, out filterCeneManje))
+                        {
+                            cmd.CommandText = "select * from prilog where cena <= ?";
+                            cmd.Parameters.AddWithValue("@filterCena", filterCeneManje);
+                            valid = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Morate uneti validan broj za filter cene!");
+                        }
+                        break;
+                    default: break;
+                }
+
+                if (valid)
+                {
+                    OleDbDataReader rd = cmd.ExecuteReader();
+
+                    while (rd.Read())
+                    {
+                        prilog prilogZaDodati = new prilog();
+                        prilogZaDodati.IdPriloga = int.Parse(rd["id_prilog"].ToString());
+                        prilogZaDodati.CenaPriloga = int.Parse(rd["cena"].ToString());
+                        prilogZaDodati.NazivPriloga = rd["naziv"].ToString();
+                        filterListaPriloga.Add(prilogZaDodati);
+                    }
+
+                    comboPrilog.DataSource = filterListaPriloga;
+                    comboPrilog.DisplayMember = "Naziv";
+                    comboPrilog.ValueMember = "IdPriloga";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + Environment.NewLine + "Error in editPrilog btnFilter_Click");
+            }
+            finally
+            {
+                baza.closeConnection();
+            }
+        }
 
         private void comboFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch(comboFilter.SelectedIndex)
+            switch (comboFilter.SelectedIndex)
             {
                 case 0: // nazivi
                     filter = 0;
@@ -65,87 +146,6 @@ namespace Restoran_aplikacija.forme.brisanje
             }
         }
 
-        private void btnFilter_Click(object sender, EventArgs e)
-        {
-            if(tboxFilter.Text.Length == 0)
-            {
-                MessageBox.Show("Morate uneti neki parametar za filtriranje!");
-                return;
-            }
-
-            bool valid = false;
-
-            try
-            {
-                OleDbCommand cmd = new OleDbCommand();
-                baza.openConnection();
-                cmd.Connection = baza.Conn;
-                List<jelo> filterListaJela = new List<jelo>();
-
-                switch (filter)
-                {
-                    case 0:
-                        cmd.CommandText = "select * from jelo where naziv like ?";
-                        cmd.Parameters.AddWithValue("@filtertekst", "%" + tboxFilter.Text + "%");
-                        valid = true;
-                        break;
-                    case 1:
-                        int filterCeneVise;
-                        if(int.TryParse(tboxFilter.Text, out filterCeneVise))
-                        {
-                            cmd.CommandText = "select * from jelo where cena >= ?";
-                            cmd.Parameters.AddWithValue("@filterCena", filterCeneVise);
-                            valid = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Morate uneti validan broj za filter cene!");
-                        }
-                        break;
-                    case 2:
-                        int filterCeneManje;
-                        if (int.TryParse(tboxFilter.Text, out filterCeneManje))
-                        {
-                            cmd.CommandText = "select * from jelo where cena <= ?";
-                            cmd.Parameters.AddWithValue("@filterCena", filterCeneManje);
-                            valid= true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Morate uneti validan broj za filter cene!");
-                        }
-                        break;
-                    default: break;
-                }
-                
-                if (valid)
-                {
-                    OleDbDataReader rd = cmd.ExecuteReader();
-                    
-                    while (rd.Read())
-                    {
-                        jelo jeloZaDodati = new jelo();
-                        jeloZaDodati.IdJela = int.Parse(rd["id_jelo"].ToString());
-                        jeloZaDodati.Cena = int.Parse(rd["cena"].ToString());
-                        jeloZaDodati.Naziv = rd["naziv"].ToString();
-                        filterListaJela.Add(jeloZaDodati);
-                    }
-
-                    comboJelo.DataSource = filterListaJela;
-                    comboJelo.DisplayMember = "Naziv";
-                    comboJelo.ValueMember = "IdJela";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + Environment.NewLine + "Error in deleteJelo btnFilter_Click");
-            }
-            finally
-            {
-                baza.closeConnection();
-            }
-        }
-
         private void btnOk_Click(object sender, EventArgs e)
         {
             bool valid = false;
@@ -155,16 +155,16 @@ namespace Restoran_aplikacija.forme.brisanje
                 baza.openConnection();
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.Connection = baza.Conn;
-                jelo jeloZaBrisanje = comboJelo.SelectedItem as jelo;
+                prilog prilogZaBrisanje = comboPrilog.SelectedItem as prilog;
 
                 cmd.CommandText = "delete from jelo where id_jelo = @idJela";
-                cmd.Parameters.AddWithValue("@idJela", jeloZaBrisanje.IdJela);
+                cmd.Parameters.AddWithValue("@idJela", prilogZaBrisanje.IdPriloga);
                 cmd.ExecuteNonQuery();
                 valid = true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + Environment.NewLine + "Error in deleteJelo btnOk_Click");
+                MessageBox.Show(ex.Message + Environment.NewLine + "Error in deletePrilog btnOk_Click");
             }
             finally
             {

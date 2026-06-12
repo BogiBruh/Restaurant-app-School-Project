@@ -1,4 +1,5 @@
 ﻿using Restoran_aplikacija.forme;
+using Restoran_aplikacija.forme.brisanje;
 using Restoran_aplikacija.forme.dodavanje;
 using Restoran_aplikacija.forme.editovanje;
 using Restoran_aplikacija.klase;
@@ -69,6 +70,29 @@ namespace Restoran_aplikacija
             formaZaIzmenuPriloga.ShowDialog();
             listaPriloga.Clear();
             listaPriloga = databaza.loadIntoPrilogList(baza);
+        }
+
+        private void izbrisiJeloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            deleteJelo formaZaBrisanjeJela = new deleteJelo(listaJela, baza);
+            formaZaBrisanjeJela.ShowDialog();
+            listaJela.Clear();
+            listaJela = databaza.loadIntoJeloList(baza);
+        }
+
+        private void izbrisiPrilogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            deletePrilog formaZaBrisanjePriloga = new deletePrilog(listaPriloga, baza);
+            formaZaBrisanjePriloga.ShowDialog();
+            listaPriloga.Clear();
+            listaPriloga = databaza.loadIntoPrilogList(baza);
+        }
+
+        private void poveziPrilogZaJeloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            connectJeloPrilog formaZaPovezivanje = new connectJeloPrilog(baza);
+            formaZaPovezivanje.ShowDialog();
+            //listaPripadnosti reloadovanje ako budem to pravio, mislim da cu samo proveravati po potrebi doduse bez nove promenljive
         }
     }
 }
