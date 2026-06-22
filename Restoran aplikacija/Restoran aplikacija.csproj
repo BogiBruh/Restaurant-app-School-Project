@@ -86,6 +86,12 @@
     <Compile Include="forme\editovanje\connectJeloPrilog.Designer.cs">
       <DependentUpon>connectJeloPrilog.cs</DependentUpon>
     </Compile>
+    <Compile Include="forme\editovanje\disconnectJeloPrilog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forme\editovanje\disconnectJeloPrilog.Designer.cs">
+      <DependentUpon>disconnectJeloPrilog.cs</DependentUpon>
+    </Compile>
     <Compile Include="forme\editovanje\editJelo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forme\editovanje\connectJeloPrilog.resx">
       <DependentUpon>connectJeloPrilog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forme\editovanje\disconnectJeloPrilog.resx">
+      <DependentUpon>disconnectJeloPrilog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forme\editovanje\editJelo.resx">
       <DependentUpon>editJelo.cs</DependentUpon>

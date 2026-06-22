@@ -65,7 +65,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(229, 9);
+            this.label1.Location = new System.Drawing.Point(172, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 25);
             this.label1.TabIndex = 0;
@@ -85,18 +86,18 @@
             this.panelJelo.Controls.Add(this.label7);
             this.panelJelo.Controls.Add(this.tboxNazivJela);
             this.panelJelo.Controls.Add(this.tboxCenaJela);
-            this.panelJelo.Location = new System.Drawing.Point(17, 48);
+            this.panelJelo.Location = new System.Drawing.Point(13, 39);
+            this.panelJelo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelJelo.Name = "panelJelo";
-            this.panelJelo.Size = new System.Drawing.Size(337, 417);
+            this.panelJelo.Size = new System.Drawing.Size(253, 339);
             this.panelJelo.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 280);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(4, 228);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 16);
+            this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 25;
             this.label5.Text = "Filtriraj po:";
             // 
@@ -104,7 +105,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(126, 4);
+            this.label2.Location = new System.Drawing.Point(94, 3);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 20);
             this.label2.TabIndex = 0;
@@ -112,10 +114,9 @@
             // 
             // btnFilterJelo
             // 
-            this.btnFilterJelo.Location = new System.Drawing.Point(196, 348);
-            this.btnFilterJelo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFilterJelo.Location = new System.Drawing.Point(147, 283);
             this.btnFilterJelo.Name = "btnFilterJelo";
-            this.btnFilterJelo.Size = new System.Drawing.Size(116, 28);
+            this.btnFilterJelo.Size = new System.Drawing.Size(87, 23);
             this.btnFilterJelo.TabIndex = 23;
             this.btnFilterJelo.Text = "Filtriraj";
             this.btnFilterJelo.UseVisualStyleBackColor = true;
@@ -124,28 +125,25 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 32);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(3, 26);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 16);
+            this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 20;
             this.label4.Text = "Izaberite jelo";
             // 
             // tboxFilterJela
             // 
-            this.tboxFilterJela.Location = new System.Drawing.Point(9, 348);
-            this.tboxFilterJela.Margin = new System.Windows.Forms.Padding(4);
+            this.tboxFilterJela.Location = new System.Drawing.Point(7, 283);
             this.tboxFilterJela.Name = "tboxFilterJela";
-            this.tboxFilterJela.Size = new System.Drawing.Size(177, 22);
+            this.tboxFilterJela.Size = new System.Drawing.Size(134, 20);
             this.tboxFilterJela.TabIndex = 22;
             // 
             // comboJelo
             // 
             this.comboJelo.FormattingEnabled = true;
-            this.comboJelo.Location = new System.Drawing.Point(8, 62);
-            this.comboJelo.Margin = new System.Windows.Forms.Padding(4);
+            this.comboJelo.Location = new System.Drawing.Point(6, 50);
             this.comboJelo.Name = "comboJelo";
-            this.comboJelo.Size = new System.Drawing.Size(309, 24);
+            this.comboJelo.Size = new System.Drawing.Size(233, 21);
             this.comboJelo.TabIndex = 15;
             this.comboJelo.SelectedIndexChanged += new System.EventHandler(this.comboJelo_SelectedIndexChanged);
             // 
@@ -156,20 +154,18 @@
             "Nazivu",
             "Ceni (vece od)",
             "Ceni (manje od)"});
-            this.comboFilterJelo.Location = new System.Drawing.Point(9, 300);
-            this.comboFilterJelo.Margin = new System.Windows.Forms.Padding(4);
+            this.comboFilterJelo.Location = new System.Drawing.Point(7, 244);
             this.comboFilterJelo.Name = "comboFilterJelo";
-            this.comboFilterJelo.Size = new System.Drawing.Size(301, 24);
+            this.comboFilterJelo.Size = new System.Drawing.Size(227, 21);
             this.comboFilterJelo.TabIndex = 21;
             this.comboFilterJelo.SelectedIndexChanged += new System.EventHandler(this.comboFilterJelo_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 101);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(3, 82);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 16);
+            this.label8.Size = new System.Drawing.Size(53, 13);
             this.label8.TabIndex = 17;
             this.label8.Text = "Naziv jela";
             // 
@@ -177,8 +173,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(4, 255);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(3, 207);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 20);
             this.label6.TabIndex = 24;
@@ -187,27 +182,24 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 173);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(3, 141);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 16);
+            this.label7.Size = new System.Drawing.Size(51, 13);
             this.label7.TabIndex = 19;
             this.label7.Text = "Cena jela";
             // 
             // tboxNazivJela
             // 
-            this.tboxNazivJela.Location = new System.Drawing.Point(8, 135);
-            this.tboxNazivJela.Margin = new System.Windows.Forms.Padding(4);
+            this.tboxNazivJela.Location = new System.Drawing.Point(6, 110);
             this.tboxNazivJela.Name = "tboxNazivJela";
-            this.tboxNazivJela.Size = new System.Drawing.Size(309, 22);
+            this.tboxNazivJela.Size = new System.Drawing.Size(233, 20);
             this.tboxNazivJela.TabIndex = 16;
             // 
             // tboxCenaJela
             // 
-            this.tboxCenaJela.Location = new System.Drawing.Point(8, 211);
-            this.tboxCenaJela.Margin = new System.Windows.Forms.Padding(4);
+            this.tboxCenaJela.Location = new System.Drawing.Point(6, 171);
             this.tboxCenaJela.Name = "tboxCenaJela";
-            this.tboxCenaJela.Size = new System.Drawing.Size(309, 22);
+            this.tboxCenaJela.Size = new System.Drawing.Size(233, 20);
             this.tboxCenaJela.TabIndex = 18;
             // 
             // panelPrilog
@@ -224,18 +216,18 @@
             this.panelPrilog.Controls.Add(this.label12);
             this.panelPrilog.Controls.Add(this.tboxNaziv);
             this.panelPrilog.Controls.Add(this.tboxCena);
-            this.panelPrilog.Location = new System.Drawing.Point(369, 48);
+            this.panelPrilog.Location = new System.Drawing.Point(277, 39);
+            this.panelPrilog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelPrilog.Name = "panelPrilog";
-            this.panelPrilog.Size = new System.Drawing.Size(337, 417);
+            this.panelPrilog.Size = new System.Drawing.Size(253, 339);
             this.panelPrilog.TabIndex = 2;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 280);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(4, 228);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 16);
+            this.label9.Size = new System.Drawing.Size(54, 13);
             this.label9.TabIndex = 33;
             this.label9.Text = "Filtriraj po:";
             // 
@@ -243,7 +235,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(151, 4);
+            this.label3.Location = new System.Drawing.Point(113, 3);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 20);
             this.label3.TabIndex = 0;
@@ -251,10 +244,9 @@
             // 
             // btnFilterPrilog
             // 
-            this.btnFilterPrilog.Location = new System.Drawing.Point(194, 351);
-            this.btnFilterPrilog.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFilterPrilog.Location = new System.Drawing.Point(146, 285);
             this.btnFilterPrilog.Name = "btnFilterPrilog";
-            this.btnFilterPrilog.Size = new System.Drawing.Size(116, 28);
+            this.btnFilterPrilog.Size = new System.Drawing.Size(87, 23);
             this.btnFilterPrilog.TabIndex = 31;
             this.btnFilterPrilog.Text = "Filtriraj";
             this.btnFilterPrilog.UseVisualStyleBackColor = true;
@@ -263,28 +255,25 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 32);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(4, 26);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 16);
+            this.label11.Size = new System.Drawing.Size(75, 13);
             this.label11.TabIndex = 28;
-            this.label11.Text = "Izaberite jelo";
+            this.label11.Text = "Izaberite prilog";
             // 
             // tboxFilterPrilog
             // 
-            this.tboxFilterPrilog.Location = new System.Drawing.Point(9, 351);
-            this.tboxFilterPrilog.Margin = new System.Windows.Forms.Padding(4);
+            this.tboxFilterPrilog.Location = new System.Drawing.Point(7, 285);
             this.tboxFilterPrilog.Name = "tboxFilterPrilog";
-            this.tboxFilterPrilog.Size = new System.Drawing.Size(177, 22);
+            this.tboxFilterPrilog.Size = new System.Drawing.Size(134, 20);
             this.tboxFilterPrilog.TabIndex = 30;
             // 
             // comboPrilog
             // 
             this.comboPrilog.FormattingEnabled = true;
-            this.comboPrilog.Location = new System.Drawing.Point(9, 62);
-            this.comboPrilog.Margin = new System.Windows.Forms.Padding(4);
+            this.comboPrilog.Location = new System.Drawing.Point(7, 50);
             this.comboPrilog.Name = "comboPrilog";
-            this.comboPrilog.Size = new System.Drawing.Size(309, 24);
+            this.comboPrilog.Size = new System.Drawing.Size(233, 21);
             this.comboPrilog.TabIndex = 23;
             // 
             // comboFilterPrilog
@@ -294,29 +283,26 @@
             "Nazivu",
             "Ceni (vece od)",
             "Ceni (manje od)"});
-            this.comboFilterPrilog.Location = new System.Drawing.Point(9, 300);
-            this.comboFilterPrilog.Margin = new System.Windows.Forms.Padding(4);
+            this.comboFilterPrilog.Location = new System.Drawing.Point(7, 244);
             this.comboFilterPrilog.Name = "comboFilterPrilog";
-            this.comboFilterPrilog.Size = new System.Drawing.Size(301, 24);
+            this.comboFilterPrilog.Size = new System.Drawing.Size(227, 21);
             this.comboFilterPrilog.TabIndex = 29;
             this.comboFilterPrilog.SelectedIndexChanged += new System.EventHandler(this.comboFilterPrilog_SelectedIndexChanged);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 101);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(3, 82);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(66, 16);
+            this.label13.Size = new System.Drawing.Size(68, 13);
             this.label13.TabIndex = 25;
-            this.label13.Text = "Naziv jela";
+            this.label13.Text = "Naziv priloga";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(5, 255);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(4, 207);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 20);
             this.label10.TabIndex = 32;
@@ -325,35 +311,33 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 173);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(3, 141);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 16);
+            this.label12.Size = new System.Drawing.Size(66, 13);
             this.label12.TabIndex = 27;
-            this.label12.Text = "Cena jela";
+            this.label12.Text = "Cena priloga";
             // 
             // tboxNaziv
             // 
-            this.tboxNaziv.Location = new System.Drawing.Point(8, 135);
-            this.tboxNaziv.Margin = new System.Windows.Forms.Padding(4);
+            this.tboxNaziv.Location = new System.Drawing.Point(6, 110);
             this.tboxNaziv.Name = "tboxNaziv";
-            this.tboxNaziv.Size = new System.Drawing.Size(309, 22);
+            this.tboxNaziv.Size = new System.Drawing.Size(233, 20);
             this.tboxNaziv.TabIndex = 24;
             // 
             // tboxCena
             // 
-            this.tboxCena.Location = new System.Drawing.Point(7, 211);
-            this.tboxCena.Margin = new System.Windows.Forms.Padding(4);
+            this.tboxCena.Location = new System.Drawing.Point(5, 171);
             this.tboxCena.Name = "tboxCena";
-            this.tboxCena.Size = new System.Drawing.Size(309, 22);
+            this.tboxCena.Size = new System.Drawing.Size(233, 20);
             this.tboxCena.TabIndex = 26;
             // 
             // btnOk
             // 
             this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOk.Location = new System.Drawing.Point(213, 471);
+            this.btnOk.Location = new System.Drawing.Point(160, 383);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(141, 72);
+            this.btnOk.Size = new System.Drawing.Size(106, 58);
             this.btnOk.TabIndex = 3;
             this.btnOk.Text = "Povezi prilog  i jelo";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -362,9 +346,10 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(370, 470);
+            this.btnCancel.Location = new System.Drawing.Point(278, 382);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(138, 72);
+            this.btnCancel.Size = new System.Drawing.Size(104, 58);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Otkazi povezivanje";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -372,14 +357,15 @@
             // 
             // connectJeloPrilog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 554);
+            this.ClientSize = new System.Drawing.Size(546, 450);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.panelPrilog);
             this.Controls.Add(this.panelJelo);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "connectJeloPrilog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Povezi prilog i jelo";

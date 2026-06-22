@@ -16,6 +16,7 @@ namespace Restoran_aplikacija.forme.editovanje
         List<jelo> listaJela;
         databaza baza;
         int filter = 0;
+        private int obrisanoJeloId;
 
         public editJelo()
         {
@@ -47,13 +48,18 @@ namespace Restoran_aplikacija.forme.editovanje
                 MessageBox.Show("Morate imati jela da biste mogli da ih menjate!");
                 this.Close();
             }
+
+            nadjiObrisanoJeloId();
         }
 
         private void comboJelo_SelectedIndexChanged(object sender, EventArgs e)
         {
             jelo selektovanoJelo = (jelo)comboJelo.SelectedItem;
-            tboxNaziv.Text = selektovanoJelo.Naziv;
-            tboxCena.Text = selektovanoJelo.Cena.ToString();
+            if(selektovanoJelo != null)
+            {
+                tboxNaziv.Text = selektovanoJelo.Naziv;
+                tboxCena.Text = selektovanoJelo.Cena.ToString();
+            }
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -128,16 +134,18 @@ namespace Restoran_aplikacija.forme.editovanje
                 switch (filter)
                 {
                     case 0:
-                        cmd.CommandText = "select * from jelo where naziv like ?";
+                        cmd.CommandText = "select * from jelo where naziv like ? and id_jelo <> @idPlaceholder";
                         cmd.Parameters.AddWithValue("@filtertekst", "%" + tboxFilter.Text + "%");
+                        cmd.Parameters.AddWithValue("@idPlaceholder", obrisanoJeloId);
                         valid = true;
                         break;
                     case 1:
                         int filterCeneVise;
                         if (int.TryParse(tboxFilter.Text, out filterCeneVise))
                         {
-                            cmd.CommandText = "select * from jelo where cena >= ?";
+                            cmd.CommandText = "select * from jelo where cena >= ? and id_jelo <> @idPlaceholder";
                             cmd.Parameters.AddWithValue("@filterCena", filterCeneVise);
+                            cmd.Parameters.AddWithValue("@idPlaceholder", obrisanoJeloId);
                             valid = true;
                         }
                         else
@@ -149,12 +157,13 @@ namespace Restoran_aplikacija.forme.editovanje
                         int filterCeneManje;
                         if (int.TryParse(tboxFilter.Text, out filterCeneManje))
                         {
-                            cmd.CommandText = "select * from jelo where cena <= ?";
+                            cmd.CommandText = "select * from jelo where cena <= ? and id_jelo <> @idPlaceholder";
                             cmd.Parameters.AddWithValue("@filterCena", filterCeneManje);
+                            cmd.Parameters.AddWithValue("@idPlaceholder", obrisanoJeloId);
                             valid = true;
                         }
                         else
-                        {
+                        { 
                             MessageBox.Show("Morate uneti validan broj za filter cene!");
                         }
                         break;
@@ -204,6 +213,27 @@ namespace Restoran_aplikacija.forme.editovanje
                     filter = 2;
                     break;
                 default: break;
+            }
+        }
+
+        private void nadjiObrisanoJeloId()
+        {
+            try
+            {
+                baza.openConnection();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = baza.Conn;
+                cmd.CommandText = "select id_jelo from jelo where naziv = '[OBRISANO JELO]'";
+                object rezultatPretrage = cmd.ExecuteScalar();
+                if(rezultatPretrage != null) obrisanoJeloId = int.Parse(rezultatPretrage.ToString());
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                baza.closeConnection();
             }
         }
     }

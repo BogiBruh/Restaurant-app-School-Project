@@ -131,6 +131,7 @@
             this.odveziPrilogOdJelaToolStripMenuItem.Name = "odveziPrilogOdJelaToolStripMenuItem";
             this.odveziPrilogOdJelaToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.odveziPrilogOdJelaToolStripMenuItem.Text = "Odvezi prilog od jela";
+            this.odveziPrilogOdJelaToolStripMenuItem.Click += new System.EventHandler(this.odveziPrilogOdJelaToolStripMenuItem_Click);
             // 
             // izbrisiStavkuToolStripMenuItem
             // 
@@ -144,14 +145,14 @@
             // izbrisiJeloToolStripMenuItem
             // 
             this.izbrisiJeloToolStripMenuItem.Name = "izbrisiJeloToolStripMenuItem";
-            this.izbrisiJeloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.izbrisiJeloToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.izbrisiJeloToolStripMenuItem.Text = "Izbrisi jelo";
             this.izbrisiJeloToolStripMenuItem.Click += new System.EventHandler(this.izbrisiJeloToolStripMenuItem_Click);
             // 
             // izbrisiPrilogToolStripMenuItem
             // 
             this.izbrisiPrilogToolStripMenuItem.Name = "izbrisiPrilogToolStripMenuItem";
-            this.izbrisiPrilogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.izbrisiPrilogToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.izbrisiPrilogToolStripMenuItem.Text = "Izbrisi prilog";
             this.izbrisiPrilogToolStripMenuItem.Click += new System.EventHandler(this.izbrisiPrilogToolStripMenuItem_Click);
             // 

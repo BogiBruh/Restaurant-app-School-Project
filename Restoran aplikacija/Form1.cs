@@ -38,6 +38,10 @@ namespace Restoran_aplikacija
             listaPriloga = new List<prilog>();
             listaPriloga = databaza.loadIntoPrilogList(baza);
             racuniZaStolovima = new int[6];
+
+            // Dodaj placeholdere ako ih nema
+            databaza.addPlaceholderDeletedPrilog(baza);
+            databaza.addPlaceholderDeletedJelo(baza);
         }
 
         private void dodajJeloToolStripMenuItem_Click(object sender, EventArgs e)
@@ -93,6 +97,12 @@ namespace Restoran_aplikacija
             connectJeloPrilog formaZaPovezivanje = new connectJeloPrilog(baza);
             formaZaPovezivanje.ShowDialog();
             //listaPripadnosti reloadovanje ako budem to pravio, mislim da cu samo proveravati po potrebi doduse bez nove promenljive
+        }
+
+        private void odveziPrilogOdJelaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            disconnectJeloPrilog formaZaOdvezivanje = new disconnectJeloPrilog(baza);
+            formaZaOdvezivanje.ShowDialog();
         }
     }
 }

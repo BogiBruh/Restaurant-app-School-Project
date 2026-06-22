@@ -17,6 +17,7 @@ namespace Restoran_aplikacija.forme.brisanje
         databaza baza;
         List<prilog> listaPriloga;
         int filter = 0;
+        int obrisanPrilogId = 0;
 
         public deletePrilog()
         {
@@ -42,6 +43,8 @@ namespace Restoran_aplikacija.forme.brisanje
                 MessageBox.Show("Morate imati makar neki prilog da biste ga izbrisali!");
                 this.Close();
             }
+
+            nadjiObrisanPrilogId();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -68,16 +71,18 @@ namespace Restoran_aplikacija.forme.brisanje
                 switch (filter)
                 {
                     case 0:
-                        cmd.CommandText = "select * from prilog where naziv like ?";
+                        cmd.CommandText = "select * from prilog where naziv like ? and id_prilog <> @idPlaceholder";
                         cmd.Parameters.AddWithValue("@filtertekst", "%" + tboxFilter.Text + "%");
+                        cmd.Parameters.AddWithValue("@idPlaceholder", obrisanPrilogId);
                         valid = true;
                         break;
                     case 1:
                         int filterCeneVise;
                         if (int.TryParse(tboxFilter.Text, out filterCeneVise))
                         {
-                            cmd.CommandText = "select * from prilog where cena >= ?";
+                            cmd.CommandText = "select * from prilog where cena >= ? and id_prilog <> @idPlaceholder";
                             cmd.Parameters.AddWithValue("@filterCena", filterCeneVise);
+                            cmd.Parameters.AddWithValue("@idPlaceholder", obrisanPrilogId);
                             valid = true;
                         }
                         else
@@ -89,8 +94,9 @@ namespace Restoran_aplikacija.forme.brisanje
                         int filterCeneManje;
                         if (int.TryParse(tboxFilter.Text, out filterCeneManje))
                         {
-                            cmd.CommandText = "select * from prilog where cena <= ?";
+                            cmd.CommandText = "select * from prilog where cena <= ? and id_prilog <> @idPlaceholder";
                             cmd.Parameters.AddWithValue("@filterCena", filterCeneManje);
+                            cmd.Parameters.AddWithValue("@idPlaceholder", obrisanPrilogId);
                             valid = true;
                         }
                         else
@@ -174,6 +180,27 @@ namespace Restoran_aplikacija.forme.brisanje
             if (valid)
             {
                 this.Close();
+            }
+        }
+
+        private void nadjiObrisanPrilogId()
+        {
+            try
+            {
+                baza.openConnection();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = baza.Conn;
+                cmd.CommandText = "select id_jelo from jelo where naziv = '[OBRISANO JELO]'";
+                object rezultatPretrage = cmd.ExecuteScalar();
+                if (rezultatPretrage != null) obrisanPrilogId = int.Parse(rezultatPretrage.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                baza.closeConnection();
             }
         }
     }

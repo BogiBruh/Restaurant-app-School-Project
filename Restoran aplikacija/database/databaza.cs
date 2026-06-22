@@ -39,7 +39,7 @@ namespace Restoran_aplikacija
                 OleDbCommand cmd = new OleDbCommand
                 {
                     Connection = baza.Conn,
-                    CommandText = "select * from jelo"
+                    CommandText = "select * from jelo where naziv <> \"[OBRISANO JELO]\""
                 };
                 OleDbDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())
@@ -74,7 +74,7 @@ namespace Restoran_aplikacija
                 OleDbCommand cmd = new OleDbCommand
                 {
                     Connection = baza.Conn,
-                    CommandText = "select * from prilog"
+                    CommandText = "select * from prilog where naziv <> \"[OBRISAN PRILOG]\""
                 };
                 OleDbDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())
@@ -94,6 +94,76 @@ namespace Restoran_aplikacija
                 MessageBox.Show(ex.Message + Environment.NewLine + "loadIntoPrilogList");
 
                 return returnList;
+            }
+            finally
+            {
+                baza.closeConnection();
+            }
+        }
+
+        public static void addPlaceholderDeletedJelo(databaza baza)
+        {
+            try
+            {
+                baza.openConnection();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = baza.Conn;
+
+                // Provera da li placeholder postoji
+                cmd.CommandText = "select count(*) from jelo where naziv = @nazivJela";
+                cmd.Parameters.AddWithValue("@nazivJela", "[OBRISANO JELO]");
+
+                int broj = int.Parse(cmd.ExecuteScalar().ToString());
+
+                if (broj == 0) // ako ne, kreiraj placeholder
+                {
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "insert into jelo(naziv, cena) values(@nazivJela, @cenaJela)";
+                    cmd.Parameters.AddWithValue("@nazivJela", "[OBRISANO JELO]");
+                    cmd.Parameters.AddWithValue("@cenaJela", 0);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + Environment.NewLine + "Error in databaza.cs, addPlaceholderDeletedJelo");
+            }
+            finally
+            {
+                baza.closeConnection();
+            }
+        }
+
+        public static void addPlaceholderDeletedPrilog(databaza baza)
+        {
+            try
+            {
+                baza.openConnection();
+
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = baza.Conn;
+
+                cmd.CommandText = "select count(*) from prilog where naziv = @nazivPriloga";
+                cmd.Parameters.AddWithValue("@nazivPriloga", "[OBRISAN PRILOG]");
+
+                int broj = int.Parse(cmd.ExecuteScalar().ToString());
+
+                if (broj == 0)
+                {
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "insert into prilog(naziv, cena) values(@nazivPriloga, @cenaPriloga)";
+                    cmd.Parameters.AddWithValue("@nazivPriloga", "[OBRISAN PRILOG]");
+                    cmd.Parameters.AddWithValue("@cenaPriloga", 0);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + Environment.NewLine + "Error in databaza.cs, addPlaceholderDeletedPrilog");
             }
             finally
             {
