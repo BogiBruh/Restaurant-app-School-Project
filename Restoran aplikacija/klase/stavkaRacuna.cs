@@ -8,14 +8,16 @@ namespace Restoran_aplikacija.klase
 {
     public class stavkaRacuna
     {
+        private int idStavke;
         private int idRacuna;
         private int idJela;
         private int idPriloga;
         private int cenaJela;
         private int cenaPriloga;
 
-        public stavkaRacuna(int idRacuna, int idJela, int idPriloga, int cenaJela, int cenaPriloga)
+        public stavkaRacuna(int idStavke, int idRacuna, int idJela, int idPriloga, int cenaJela, int cenaPriloga)
         {
+            this.IdStavke = idStavke;
             this.IdRacuna = idRacuna;
             this.IdJela = idJela;
             this.IdPriloga = idPriloga;
@@ -32,6 +34,7 @@ namespace Restoran_aplikacija.klase
             this.cenaJela= 0;
         }
 
+        public int IdStavke { get => idStavke; set => idStavke = value; }
         public int IdRacuna { get => idRacuna; set => idRacuna = value; }
         public int IdJela { get => idJela; set => idJela = value; }
         public int IdPriloga { get => idPriloga; set => idPriloga = value; }

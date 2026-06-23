@@ -163,10 +163,30 @@ namespace Restoran_aplikacija.forme.brisanje
                 cmd.Connection = baza.Conn;
                 jelo jeloZaBrisanje = comboJelo.SelectedItem as jelo;
 
-                cmd.CommandText = "delete from jelo where id_jelo = @idJela";
-                cmd.Parameters.AddWithValue("@idJela", jeloZaBrisanje.IdJela);
-                cmd.ExecuteNonQuery();
-                valid = true;
+                DialogResult dijalog = MessageBox.Show(
+                     $"Da li ste sigurni da zelite da obrisete {jeloZaBrisanje.Naziv}?", "Potvrda Brisanja Jela", MessageBoxButtons.YesNo);
+
+                if (dijalog == DialogResult.Yes)
+                {
+                    cmd.CommandText = "delete from pripadnost where id_jelo = @idJela";
+                    cmd.Parameters.AddWithValue("@idJela", jeloZaBrisanje.IdJela);
+                    cmd.ExecuteNonQuery();
+
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "update stavka_racuna " +
+                        "set id_jelo = @idObrisanog " +
+                        "where id_jelo = @idSelektovanog";
+                    cmd.Parameters.AddWithValue("@idObrisanog", obrisanoJeloId);
+                    cmd.Parameters.AddWithValue("@idSelektovanog", jeloZaBrisanje.IdJela);
+                    cmd.ExecuteNonQuery();
+
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "delete from jelo where id_jelo = @idJela";
+                    cmd.Parameters.AddWithValue("@idJela", jeloZaBrisanje.IdJela);
+                    cmd.ExecuteNonQuery();
+                    valid = true;
+                    MessageBox.Show("Uspesno obrisano jelo.");
+                }
             }
             catch (Exception ex)
             {

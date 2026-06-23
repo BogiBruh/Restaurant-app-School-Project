@@ -163,10 +163,30 @@ namespace Restoran_aplikacija.forme.brisanje
                 cmd.Connection = baza.Conn;
                 prilog prilogZaBrisanje = comboPrilog.SelectedItem as prilog;
 
-                cmd.CommandText = "delete from jelo where id_jelo = @idJela";
-                cmd.Parameters.AddWithValue("@idJela", prilogZaBrisanje.IdPriloga);
-                cmd.ExecuteNonQuery();
-                valid = true;
+                DialogResult dijalog = MessageBox.Show(
+                    $"Da li ste sigurni da zelite da obrisete {prilogZaBrisanje.NazivPriloga}?", "Potvrda Brisanja Priloga", MessageBoxButtons.YesNo);
+
+                if(dijalog == DialogResult.Yes)
+                {
+                    cmd.CommandText = "delete from pripadnost where id_prilog = @idPriloga";
+                    cmd.Parameters.AddWithValue("@idPriloga", prilogZaBrisanje.IdPriloga);
+                    cmd.ExecuteNonQuery();
+
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "update stavka_racuna " +
+                        "set id_prilog = @idObrisanog " +
+                        "where id_prilog = @idSelektovanog";
+                    cmd.Parameters.AddWithValue("@idObrisanog", obrisanPrilogId);
+                    cmd.Parameters.AddWithValue("@idSelektovanog", prilogZaBrisanje.IdPriloga);
+                    cmd.ExecuteNonQuery();
+
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "delete from prilog where id_prilog = @idPriloga";
+                    cmd.Parameters.AddWithValue("@idPriloga", prilogZaBrisanje.IdPriloga);
+                    cmd.ExecuteNonQuery();
+                    valid = true;
+                    MessageBox.Show("Uspesno obrisan prilog.");
+                }
             }
             catch (Exception ex)
             {

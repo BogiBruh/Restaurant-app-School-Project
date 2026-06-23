@@ -170,5 +170,53 @@ namespace Restoran_aplikacija
                 baza.closeConnection();
             }
         }
+
+        public static void deleteStavkaRacuna(databaza baza, int idStavke)
+        {
+            try
+            {
+                baza.openConnection();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = baza.Conn;
+
+                cmd.CommandText = "select cenaJelo + cenaPrilog as ukupna_cena, id_racun from stavka_racuna where id_stavke = @idStavke";
+                cmd.Parameters.AddWithValue("@idStavke", idStavke);
+                int cena = 0;
+                int idRacuna = 0;
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    idRacuna = int.Parse(reader["id_racun"].ToString());
+                    cena = int.Parse(reader["ukupna_cena"].ToString());
+                }
+                reader.Close();
+
+                cmd.Parameters.Clear();
+
+                cmd.CommandText = "update racun " +
+                    "set ukupna_cena = ukupna_cena - @cenaObroka " +
+                    "where id_racun = @idRacuna";
+                cmd.Parameters.AddWithValue("@cenaObroka", cena);
+                cmd.Parameters.AddWithValue("@idRacuna", idRacuna);
+                cmd.ExecuteNonQuery();
+
+                cmd.Parameters.Clear();
+
+                cmd.CommandText = "delete from stavka_racuna where id_stavke = @idStavke";
+                cmd.Parameters.AddWithValue("@idStavke", idStavke);
+                int affected = cmd.ExecuteNonQuery();
+                Console.Write($"Deleted {affected} rows\n");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + Environment.NewLine + "Error in databaza delete");
+            }
+            finally
+            {
+                baza.closeConnection();
+            }
+        }
     }
 }
