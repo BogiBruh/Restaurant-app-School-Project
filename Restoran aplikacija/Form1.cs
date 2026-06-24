@@ -394,6 +394,8 @@ namespace Restoran_aplikacija
                                 lblNazivJeloDana.Left = panelJeloDana.Width; // leva ivica labele dodje na ivicu panela. left je isto u odnosu na parent control
                                 obrnuoKrug = true;
                             }
+
+                            if (obrnuoKrug && lblNazivJeloDana.Left == pocetnaXVrednost) stigloNaPocetak = true;
                         }));
                     }
                     catch
@@ -402,8 +404,6 @@ namespace Restoran_aplikacija
                     }
 
                     Thread.Sleep(10);
-
-                    if (obrnuoKrug && lblNazivJeloDana.Left == pocetnaXVrednost) stigloNaPocetak = true; 
 
                     if (stigloNaPocetak) break;
                 }
