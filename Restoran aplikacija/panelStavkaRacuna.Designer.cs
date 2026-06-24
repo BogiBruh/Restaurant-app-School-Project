@@ -34,6 +34,7 @@
             this.lblCenaJela = new System.Windows.Forms.Label();
             this.lblCenaPriloga = new System.Windows.Forms.Label();
             this.btnDeleteStavka = new System.Windows.Forms.Button();
+            this.btnIzmeni = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblNazivJela
@@ -98,10 +99,23 @@
             this.btnDeleteStavka.UseVisualStyleBackColor = false;
             this.btnDeleteStavka.Click += new System.EventHandler(this.btnDeleteStavka_Click);
             // 
+            // btnIzmeni
+            // 
+            this.btnIzmeni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnIzmeni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIzmeni.Location = new System.Drawing.Point(8, 84);
+            this.btnIzmeni.Name = "btnIzmeni";
+            this.btnIzmeni.Size = new System.Drawing.Size(127, 38);
+            this.btnIzmeni.TabIndex = 6;
+            this.btnIzmeni.Text = "Izmeni stavku";
+            this.btnIzmeni.UseVisualStyleBackColor = false;
+            this.btnIzmeni.Click += new System.EventHandler(this.btnIzmeni_Click);
+            // 
             // panelStavkaRacuna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnIzmeni);
             this.Controls.Add(this.btnDeleteStavka);
             this.Controls.Add(this.lblCenaPriloga);
             this.Controls.Add(this.lblCenaJela);
@@ -109,7 +123,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblNazivJela);
             this.Name = "panelStavkaRacuna";
-            this.Size = new System.Drawing.Size(305, 77);
+            this.Size = new System.Drawing.Size(305, 125);
             this.Load += new System.EventHandler(this.panelStavkaRacuna_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -124,5 +138,6 @@
         private System.Windows.Forms.Label lblCenaJela;
         private System.Windows.Forms.Label lblCenaPriloga;
         private System.Windows.Forms.Button btnDeleteStavka;
+        private System.Windows.Forms.Button btnIzmeni;
     }
 }

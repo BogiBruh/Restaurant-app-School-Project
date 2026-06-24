@@ -40,19 +40,23 @@ namespace Restoran_aplikacija.forme
 
                 if (tboxNaziv.Text.Length > 0)
                 {                    
-                    nazivJela = tboxNaziv.Text;
-                    if (int.TryParse(tboxCena.Text, out cenaJela))
+                    if(tboxNaziv.Text.Length < 255)
                     {
-                        cmd.CommandText = "insert into jelo(naziv, cena) values(@naziv, @cena)";
-                        cmd.Parameters.AddWithValue("naziv", nazivJela);
-                        cmd.Parameters.AddWithValue("cena", cenaJela);
-                        cmd.ExecuteNonQuery();
-                        valid = true;
+                        nazivJela = tboxNaziv.Text;
+                        if (int.TryParse(tboxCena.Text, out cenaJela))
+                        {
+                            cmd.CommandText = "insert into jelo(naziv, cena) values(@naziv, @cena)";
+                            cmd.Parameters.AddWithValue("naziv", nazivJela);
+                            cmd.Parameters.AddWithValue("cena", cenaJela);
+                            cmd.ExecuteNonQuery();
+                            valid = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Morate uneti broj za cenu!");
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Morate uneti broj za cenu!");
-                    }
+                    else MessageBox.Show("Nema sanse da se stvarno tako zove jelo.(mora manje od 255 karaktera)");
                 }
                 else
                 {

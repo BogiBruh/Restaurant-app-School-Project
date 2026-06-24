@@ -46,19 +46,23 @@ namespace Restoran_aplikacija.forme.dodavanje
 
                 if (tboxNaziv.Text.Length > 0)
                 {
-                    nazivPriloga = tboxNaziv.Text;
-                    if (int.TryParse(tboxCena.Text, out cenaPriloga))
+                    if(tboxNaziv.Text.Length < 255)
                     {
-                        cmd.CommandText = "insert into prilog(naziv, cena) values(@naziv, @cena)";
-                        cmd.Parameters.AddWithValue("naziv", nazivPriloga);
-                        cmd.Parameters.AddWithValue("cena", cenaPriloga);
-                        cmd.ExecuteNonQuery();
-                        valid = true;
+                        nazivPriloga = tboxNaziv.Text;
+                        if (int.TryParse(tboxCena.Text, out cenaPriloga))
+                        {
+                            cmd.CommandText = "insert into prilog(naziv, cena) values(@naziv, @cena)";
+                            cmd.Parameters.AddWithValue("naziv", nazivPriloga);
+                            cmd.Parameters.AddWithValue("cena", cenaPriloga);
+                            cmd.ExecuteNonQuery();
+                            valid = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Morate uneti broj za cenu!");
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Morate uneti broj za cenu!");
-                    }
+                    else MessageBox.Show("Nema sanse da se tako zove prilog.(mora manje od 255 karaktera)");
                 }
                 else
                 {

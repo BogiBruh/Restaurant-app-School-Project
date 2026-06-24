@@ -36,6 +36,14 @@
             this.btnFilter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblBrRacuna = new System.Windows.Forms.Label();
+            this.lblZarada = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblNajprodavanijiPrilog = new System.Windows.Forms.Label();
+            this.lblNajprodavanijeJelo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgridRacun)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +59,7 @@
             // 
             this.btnOtvoriRacun.Location = new System.Drawing.Point(12, 533);
             this.btnOtvoriRacun.Name = "btnOtvoriRacun";
-            this.btnOtvoriRacun.Size = new System.Drawing.Size(107, 38);
+            this.btnOtvoriRacun.Size = new System.Drawing.Size(107, 46);
             this.btnOtvoriRacun.TabIndex = 1;
             this.btnOtvoriRacun.Text = "Prikazi racun";
             this.btnOtvoriRacun.UseVisualStyleBackColor = true;
@@ -110,11 +118,91 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Do";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(137, 533);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(140, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Broj racuna u ovom periodu:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(137, 566);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(159, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Ukupna zarada u ovom periodu:";
+            // 
+            // lblBrRacuna
+            // 
+            this.lblBrRacuna.AutoSize = true;
+            this.lblBrRacuna.Location = new System.Drawing.Point(302, 533);
+            this.lblBrRacuna.Name = "lblBrRacuna";
+            this.lblBrRacuna.Size = new System.Drawing.Size(35, 13);
+            this.lblBrRacuna.TabIndex = 10;
+            this.lblBrRacuna.Text = "label6";
+            // 
+            // lblZarada
+            // 
+            this.lblZarada.AutoSize = true;
+            this.lblZarada.Location = new System.Drawing.Point(302, 566);
+            this.lblZarada.Name = "lblZarada";
+            this.lblZarada.Size = new System.Drawing.Size(35, 13);
+            this.lblZarada.TabIndex = 11;
+            this.lblZarada.Text = "label7";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 596);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Najprodavanije jelo:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(16, 618);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(105, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Najprodavaniji prilog:";
+            // 
+            // lblNajprodavanijiPrilog
+            // 
+            this.lblNajprodavanijiPrilog.AutoSize = true;
+            this.lblNajprodavanijiPrilog.Location = new System.Drawing.Point(128, 617);
+            this.lblNajprodavanijiPrilog.Name = "lblNajprodavanijiPrilog";
+            this.lblNajprodavanijiPrilog.Size = new System.Drawing.Size(35, 13);
+            this.lblNajprodavanijiPrilog.TabIndex = 14;
+            this.lblNajprodavanijiPrilog.Text = "label8";
+            // 
+            // lblNajprodavanijeJelo
+            // 
+            this.lblNajprodavanijeJelo.AutoSize = true;
+            this.lblNajprodavanijeJelo.Location = new System.Drawing.Point(131, 596);
+            this.lblNajprodavanijeJelo.Name = "lblNajprodavanijeJelo";
+            this.lblNajprodavanijeJelo.Size = new System.Drawing.Size(35, 13);
+            this.lblNajprodavanijeJelo.TabIndex = 15;
+            this.lblNajprodavanijeJelo.Text = "label9";
+            // 
             // izvestajRacuna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 583);
+            this.ClientSize = new System.Drawing.Size(470, 672);
+            this.Controls.Add(this.lblNajprodavanijeJelo);
+            this.Controls.Add(this.lblNajprodavanijiPrilog);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblZarada);
+            this.Controls.Add(this.lblBrRacuna);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnFilter);
@@ -143,5 +231,13 @@
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblBrRacuna;
+        private System.Windows.Forms.Label lblZarada;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblNajprodavanijiPrilog;
+        private System.Windows.Forms.Label lblNajprodavanijeJelo;
     }
 }

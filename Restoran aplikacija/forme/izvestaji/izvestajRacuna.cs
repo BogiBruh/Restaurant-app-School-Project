@@ -35,6 +35,10 @@ namespace Restoran_aplikacija.forme.izvestaji
             dgridRacun.AllowUserToAddRows = false;
             dgridRacun.ReadOnly = true;
             dgridRacun.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            countAllRacun();
+            ukupnaZarada();
+            najprodavanijeJelo();
+            najprodavanijiPrilog();
         }
 
         private void ucitajRacune()
@@ -58,6 +62,7 @@ namespace Restoran_aplikacija.forme.izvestaji
                 OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
                 adapter.Fill(dt);
                 dgridRacun.DataSource = dt;
+                adapter.Dispose();
             }
             catch(Exception ex)
             {
@@ -80,8 +85,8 @@ namespace Restoran_aplikacija.forme.izvestaji
                 DataTable dt = new DataTable();
                 cmd.Connection = baza.Conn;
                 cmd.CommandText = "select jelo.naziv as nazivJela, sr.cenaJelo as cenaJela, " +
-                    "prilog.naziv as nazivPriloga, sr.cenaPrilog as cenaPriloga, racun.datum as datum " +
-                    "from ((stavka_racuna as sr " +
+                                  "prilog.naziv as nazivPriloga, sr.cenaPrilog as cenaPriloga, racun.datum as datum " +
+                                  "from ((stavka_racuna as sr " +
                     "left join jelo on sr.id_jelo = jelo.id_jelo) " +
                     "left join prilog on sr.id_prilog = prilog.id_prilog) " +
                     "left join racun on sr.id_racun = racun.id_racun " +
@@ -161,6 +166,128 @@ namespace Restoran_aplikacija.forme.izvestaji
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message + Environment.NewLine + "Error in izvestajRacuna btnFilter_Click");
+            }
+            finally
+            {
+                baza.closeConnection();
+            }
+
+            countAllRacun();
+            ukupnaZarada();
+            najprodavanijeJelo();
+            najprodavanijiPrilog();
+        }
+
+        private void countAllRacun()
+        {
+            lblBrRacuna.Text = dgridRacun.Rows.Count.ToString();
+        }
+
+        private void ukupnaZarada()
+        {
+            int zarada = 0;
+
+            foreach(DataGridViewRow row in dgridRacun.Rows)
+            {
+                zarada += int.Parse(row.Cells["Cena"].Value.ToString());
+            }
+
+            lblZarada.Text = zarada.ToString() + " din";
+        }
+
+        private void najprodavanijeJelo()
+        {
+            string ideviZaProveru;
+            List<int> ideviRacuna = new List<int>();
+
+            foreach(DataGridViewRow row in dgridRacun.Rows)
+            {
+                ideviRacuna.Add(int.Parse(row.Cells["\"ID Racuna\""].Value.ToString()));
+            }
+
+            ideviZaProveru = string.Join(", ", ideviRacuna);
+
+            if(ideviZaProveru.Length == 0)
+            {
+                lblBrRacuna.Text = "0";
+                lblNajprodavanijeJelo.Text = "Nije prodano nijedno jelo u ovom periodu";
+                lblNajprodavanijiPrilog.Text = "Nije prodan nijedan prilog u ovom periodu";
+                lblZarada.Text = "0";
+                return;
+            }
+
+            try
+            {
+                baza.openConnection();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = baza.Conn;
+
+                cmd.CommandText = "select top 1 j.naziv, count(*) as brProdaja " +
+                    "from stavka_racuna as sr " +
+                    "left join jelo as j on j.id_jelo = sr.id_jelo " +
+                    "where sr.id_racun in (" + ideviZaProveru + ") " +
+                    "group by j.naziv " +
+                    "order by count(*) desc";
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int brProdaja = int.Parse(reader[1].ToString());
+                string imeJela = reader[0].ToString();
+                lblNajprodavanijeJelo.Text = imeJela + " - Prodano " + brProdaja + " puta";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + Environment.NewLine + "Error in izvestajRacuna najprodavanijeJelo");
+            }
+            finally
+            {
+                baza.closeConnection();
+            }
+        }
+
+        private void najprodavanijiPrilog()
+        {
+            string ideviZaProveru = "";
+            List<int> ideviRacuna = new List<int>();
+
+            foreach (DataGridViewRow row in dgridRacun.Rows)
+            {
+                ideviRacuna.Add(int.Parse(row.Cells["\"ID Racuna\""].Value.ToString()));
+            }
+
+            ideviZaProveru = string.Join(", ", ideviRacuna);
+
+            if (ideviZaProveru.Length == 0)
+            {
+                lblBrRacuna.Text = "0";
+                lblNajprodavanijeJelo.Text = "Nije prodano nijedno jelo u ovom periodu";
+                lblNajprodavanijiPrilog.Text = "Nije prodan nijedan prilog u ovom periodu";
+                lblZarada.Text = "0";
+                return;
+            }
+
+            try
+            {
+                baza.openConnection();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = baza.Conn;
+
+                cmd.CommandText = "select top 1 p.naziv, count(*) as brProdaja " +
+                    "from stavka_racuna as sr " +
+                    "left join prilog as p on p.id_prilog = sr.id_prilog " +
+                    "where sr.id_racun in (" + ideviZaProveru + ") " +
+                    "group by p.naziv " +
+                    "order by count(*) desc";
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int brProdaja = int.Parse(reader[1].ToString());
+                string imePriloga = reader[0].ToString();
+                lblNajprodavanijiPrilog.Text = imePriloga + " - Prodano " + brProdaja + " puta";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + Environment.NewLine + "Error in izvestajRacuna najprodavanijeJelo");
             }
             finally
             {

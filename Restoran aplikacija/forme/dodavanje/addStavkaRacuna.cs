@@ -16,7 +16,9 @@ namespace Restoran_aplikacija.forme.dodavanje
     {
         databaza baza;
         int idRacuna;
+        int idStavkeGlobal;
         FlowLayoutPanel flowStavke;
+        panelStavkaRacuna panel;
         int filter = 0;
         private int obrisanoJeloId = 0;
         private int obrisanPrilogId = 0;
@@ -24,6 +26,9 @@ namespace Restoran_aplikacija.forme.dodavanje
         List<prilog> listaPriloga;
         jelo odabranoJelo;
         prilog odabranPrilog;
+
+        bool editMode = false;
+        int idPrilogaEditMode;
 
         public addStavkaRacuna()
         {
@@ -36,6 +41,15 @@ namespace Restoran_aplikacija.forme.dodavanje
             baza = _baza;
             flowStavke = _flowStavke;
             idRacuna = _idRacuna;
+        }
+
+        public addStavkaRacuna(databaza _baza, panelStavkaRacuna _panel, int _idStavke)
+        {
+            InitializeComponent();
+            baza = _baza;
+            panel = _panel;
+            idStavkeGlobal = _idStavke;
+            editMode = true;
         }
 
         private void addStavkaRacuna_Load(object sender, EventArgs e)
@@ -54,6 +68,42 @@ namespace Restoran_aplikacija.forme.dodavanje
 
             nadjiObrisanPrilogId();
             nadjiObrisanoJeloId();
+
+            if (editMode)
+            {
+                try
+                {
+                    baza.openConnection();
+                    OleDbCommand cmd = new OleDbCommand();
+                    cmd.Connection = baza.Conn;
+                    cmd.CommandText = "select id_jelo, id_prilog from stavka_racuna where id_stavke = @idStavke";
+                    cmd.Parameters.AddWithValue("@idStavke", idStavkeGlobal);
+                    OleDbDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+                    
+                    foreach(jelo jelo in listaJela)
+                    {
+                        if(jelo.IdJela == int.Parse(reader[0].ToString()))
+                        {
+                            odabranoJelo = jelo;
+                            comboJelo.SelectedItem = odabranoJelo;
+                            break;
+                        }
+                    }
+
+                    idPrilogaEditMode = int.Parse(reader[1].ToString());
+
+                    reader.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message + Environment.NewLine + "Error in addstavkaracuna_load");
+                }
+                finally
+                {
+                    baza.closeConnection();
+                }
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -224,11 +274,27 @@ namespace Restoran_aplikacija.forme.dodavanje
                 {
                     MessageBox.Show("Morate imati makar jedan prilog da biste ga povezali sa jelom!");
                     this.Close();
+                    return;
                 }
 
                 comboJelo.DataSource = listaPriloga;
                 comboJelo.DisplayMember = "NazivPriloga";
                 comboJelo.ValueMember = "IdPriloga";
+
+                if (editMode)
+                {
+                    foreach (prilog p in listaPriloga)
+                    {
+                        if (p.IdPriloga == idPrilogaEditMode)
+                        {
+                            odabranPrilog = p;
+                            break;
+                        }
+                    }
+
+                    comboJelo.SelectedItem = odabranPrilog;
+                }
+
                 MessageBox.Show("Izabrano jelo: " + odabranoJelo.Naziv);
             }
             else return;
@@ -292,6 +358,29 @@ namespace Restoran_aplikacija.forme.dodavanje
                     baza.openConnection();
                     OleDbCommand cmd = new OleDbCommand();
                     cmd.Connection = baza.Conn;
+
+                    if (editMode)
+                    {
+                        cmd.CommandText = "update stavka_racuna " +
+                            "set id_jelo = @idJela, " +
+                            "id_prilog = @idPriloga, " +
+                            "cenaJelo = @cenaJela, " +
+                            "cenaPrilog = @cenaPriloga " +
+                            "where id_stavke = @idStavke";
+                        cmd.Parameters.AddWithValue("@idJela", odabranoJelo.IdJela);
+                        cmd.Parameters.AddWithValue("@idPriloga", odabranPrilog.IdPriloga);
+                        cmd.Parameters.AddWithValue("@cenaJela", odabranoJelo.Cena);
+                        cmd.Parameters.AddWithValue("@cenaPriloga", odabranPrilog.CenaPriloga);
+                        cmd.Parameters.AddWithValue("@idStavke", idStavkeGlobal);
+                        cmd.ExecuteNonQuery();
+
+                        panel.podesiJelo(odabranoJelo.Naziv, odabranoJelo.Cena);
+                        panel.podesiPrilog(odabranPrilog.NazivPriloga, odabranPrilog.CenaPriloga);
+
+                        MessageBox.Show("Uspesno izmenjena stavka racuna!");
+                        this.Close();
+                        return; // izlazimo iz trya u finally
+                    }
 
                     cmd.CommandText = "insert into stavka_racuna(id_racun, id_jelo, id_prilog, cenaJelo, cenaPrilog) " +
                         "values(@idRacuna, @idJela, @idPriloga, @cenaJela, @cenaPriloga)";
