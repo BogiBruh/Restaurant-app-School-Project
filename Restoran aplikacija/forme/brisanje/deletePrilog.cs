@@ -210,7 +210,7 @@ namespace Restoran_aplikacija.forme.brisanje
                 baza.openConnection();
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.Connection = baza.Conn;
-                cmd.CommandText = "select id_jelo from jelo where naziv = '[OBRISANO JELO]'";
+                cmd.CommandText = "select id_prilog from prilog where naziv = '[OBRISAN PRILOG]'";
                 object rezultatPretrage = cmd.ExecuteScalar();
                 if (rezultatPretrage != null) obrisanPrilogId = int.Parse(rezultatPretrage.ToString());
             }

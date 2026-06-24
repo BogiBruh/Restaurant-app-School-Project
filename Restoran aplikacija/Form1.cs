@@ -12,6 +12,7 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,6 +26,10 @@ namespace Restoran_aplikacija
         List<prilog> listaPriloga;
         int[] racuniZaStolovima;
         Button[] dugmadStolova;
+
+        Thread threadAnim;
+        bool animacijaRadi;
+        int pocetnaXVrednost;
         // ### DEKLARISANJE GOTOVO###
         public MainForm()
         {
@@ -55,6 +60,13 @@ namespace Restoran_aplikacija
             {
                 btnFirstTable, btnSecondTable, btnThirdTable, btnFourthTable, btnFifthTable, btnSixthTable
             };
+
+            // animiramo panel JELO DANA
+            timerAnimacija_Tick(sender, e); // pokrecemo timer prvi put
+            pocetnaXVrednost = lblNazivJeloDana.Left; // pamtimo gde je bila leva ivica
+            animacijaRadi = true;
+            threadAnim = new Thread(animirajJeloDana);
+            threadAnim.Start();
         }
 
         private void dodajJeloToolStripMenuItem_Click(object sender, EventArgs e)
@@ -128,6 +140,7 @@ namespace Restoran_aplikacija
             }
             else indeksStola = int.Parse(btn.Tag.ToString());
             int idRacuna = racuniZaStolovima[indeksStola];
+            lblCena.Text = "0 din";
 
             if(idRacuna == 0)
             {
@@ -217,7 +230,8 @@ namespace Restoran_aplikacija
                 reader.Close();
                 lblCena.Text = cenaRacuna.ToString() + " din";
 
-                for(int i = 0; i < stavkeRacunaLista.Count; i++)
+                flowStavke.Controls.Clear();
+                for (int i = 0; i < stavkeRacunaLista.Count; i++)
                 {
                     panelStavkaRacuna noviPanel = new panelStavkaRacuna(baza);
                     cmd.Parameters.Clear();
@@ -307,6 +321,98 @@ namespace Restoran_aplikacija
         {
             izvestajRacuna izvestajForma = new izvestajRacuna(baza);
             izvestajForma.ShowDialog();
+        }
+
+        private void timerAnimacija_Tick(object sender, EventArgs e)
+        {
+            // moram da pravim novi databaza objekat jer inace postoji sansa da clashuju korisnik i timer u koriscenju baze
+            databaza timerBaza = new databaza(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\database\\Restoran.accdb");
+            try
+            {
+                Console.WriteLine("TICK");
+                timerBaza.openConnection();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = timerBaza.Conn;
+                cmd.CommandText = "select top 1 j.naziv, j.cena, count(sr.id_jelo) " +
+                    "from (jelo as j " +
+                    "left join stavka_racuna as sr on sr.id_jelo = j.id_jelo) " +
+                    "left join racun as r on r.id_racun = sr.id_racun " +
+                    "where r.datum = @danas " +
+                    "group by j.naziv, j.cena " +
+                    "order by count(sr.id_jelo) desc";
+                cmd.Parameters.AddWithValue("@danas", DateTime.Now.Date);
+                OleDbDataReader reader = cmd.ExecuteReader();
+                Console.WriteLine("Reader executed");
+
+                if (reader.Read())
+                {
+                    lblNazivJeloDana.Text = reader[0].ToString();
+                    lblCenaJeloDana.Text = reader[1].ToString() + " din";
+                    lblBrProdaja.Text = reader[2].ToString();
+                }
+                else
+                {
+                    lblCenaJeloDana.Text = "0 din";
+                    lblNazivJeloDana.Text = "Nema prodanih jela danas.";
+                    lblBrProdaja.Text = "0";
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + Environment.NewLine + "Error in timerAnimacija_tick");
+            }
+            finally
+            {
+                timerBaza.closeConnection();
+            }
+        }
+
+        private void animirajJeloDana()
+        {
+            while (animacijaRadi)
+            {
+                Thread.Sleep(5000);
+
+                bool obrnuoKrug = false;
+                bool stigloNaPocetak = false;
+
+                if(this.IsDisposed) return; // za slucaj gasenja forme
+                while (animacijaRadi) // mora jos jednom, inace se na svakih 5 sekundi samo malo pomeri
+                {
+                    if(this.IsDisposed) return;
+                    try // ako se gasi usred animacije
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            lblNazivJeloDana.Left -= 1;
+
+                            /* lblNazivJeloDana.Right daje koordinatu u odnosu na panel(parent control), iz nekog razloga.
+                             * solidnih 15min je otislo samo na debugovanje ovoga.
+                             */
+                            if (lblNazivJeloDana.Right < 0)
+                            {
+                                lblNazivJeloDana.Left = panelJeloDana.Width; // leva ivica labele dodje na ivicu panela. left je isto u odnosu na parent control
+                                obrnuoKrug = true;
+                            }
+                        }));
+                    }
+                    catch
+                    {
+                        return;
+                    }
+
+                    Thread.Sleep(10);
+
+                    if (obrnuoKrug && lblNazivJeloDana.Left == pocetnaXVrednost) stigloNaPocetak = true; 
+
+                    if (stigloNaPocetak) break;
+                }
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            animacijaRadi = false;
         }
     }
 }
